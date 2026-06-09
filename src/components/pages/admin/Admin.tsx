@@ -1,0 +1,7 @@
+import React from "react";
+import scss from "./admin.module.scss";
+const Admin = () => {
+  return <div></div>;
+};
+
+export default Admin;
