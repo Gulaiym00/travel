@@ -1,5 +1,7 @@
+import Region from "@/components/pages/region/Region";
+
 const page = () => {
-  return <div></div>;
+  return <Region />;
 };
 
 export default page;

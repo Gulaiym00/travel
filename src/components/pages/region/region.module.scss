@@ -1,0 +1,61 @@
+.region {
+  padding-block: 40px;
+
+  .mainRegion {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+  }
+
+  .regionCard {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 40px 48px;
+    border-radius: 26px;
+    gap: 40px;
+
+    &:nth-child(odd) {
+      flex-direction: row;
+      background-color: #000;
+      color: #fff;
+    }
+
+    &:nth-child(even) {
+      flex-direction: row-reverse;
+      background-color: #fff;
+      color: #000;
+      border: 1px solid #000;
+    }
+  }
+
+  .regionTitle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    h1 {
+      font-family: Georgia, "Kyiv*Type Serif", serif;
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    p {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+  }
+
+  img {
+    flex: 1;
+    max-width: 48%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 18px;
+  }
+}
