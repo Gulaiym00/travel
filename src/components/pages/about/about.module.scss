@@ -1,0 +1,117 @@
+.container {
+  background: #000;
+  padding-block: 120px;
+  color: white;
+  font-family: Poppins;
+  h2 {
+    font-size: 30px;
+  }
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    // width: 70%;
+    gap: 30px;
+    .mission {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      .images {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        img {
+          width: 257px;
+          height: 200px;
+          border-radius: 10px;
+          filter: brightness(0.5);
+        }
+      }
+    }
+    .recommend {
+      padding-block: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      img {
+        width: 580px;
+        height: 400px;
+        border-radius: 10px;
+        filter: brightness(0.5);
+      }
+      .recommendText {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+    .plus {
+      display: flex;
+      flex-direction: column;
+      padding-block: 30px;
+      h2 {
+        margin-bottom: 30px;
+      }
+      border-bottom: 2px solid white;
+    }
+    .statistics {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .list {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        padding-block: 30px;
+        .card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+          span {
+            font-size: 38px;
+          }
+        }
+      }
+    }
+    .team {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .list {
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        padding-block: 30px;
+
+        .card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          width: 300px;
+          img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin-right: 70px;
+          }
+        }
+      }
+    }
+    .places {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      p {
+        border: 1px solid white;
+        width: 200px;
+        height: 50px;
+        padding-block: 10px;
+        text-align: center;
+      }
+    }
+  }
+}

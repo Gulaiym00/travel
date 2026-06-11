@@ -1,0 +1,30 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: white;
+  transition: 0.8s;
+
+  h3 {
+    font-size: 17px;
+  }
+
+  img {
+    width: 185px;
+    height: 240px;
+    border-radius: 10px;
+    filter: brightness(0.4);
+  }
+  .text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 160px;
+    left: 35px;
+  }
+}
+.card:hover {
+  transform: translateY(-10px);
+}
