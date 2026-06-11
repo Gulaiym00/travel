@@ -23,7 +23,6 @@ export interface IComments {
 export interface State {
   userName: string;
   comment: string;
-  data: Products[];
 }
 export interface Products {
   title: string;
