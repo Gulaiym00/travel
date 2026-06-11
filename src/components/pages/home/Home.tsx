@@ -14,7 +14,7 @@ const Home = () => {
     <>
       <section className={scss.hero}>
         <div className="container">
-            <div className={scss.mainContainer}>
+          <div className={scss.mainContainer}>
             <h1>
               <Typewriter
                 words={["Добро пожаловать\n в TravelKG"]}
