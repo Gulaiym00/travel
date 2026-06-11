@@ -3,7 +3,7 @@ import scss from "./admin.module.scss";
 import { useForm } from "react-hook-form";
 import { useCreateProduct } from "@/hooks/admin/useCreateProduct";
 import { Products } from "@/hooks/type/type";
-import AdminCard from "@/components/adminUi/adminCard/AdminCard";
+import AdminCard from "@/components/ui/adminCard/AdminCard";
 import { useUpdateProduct } from "@/hooks/admin/useUpdateProduct";
 import { useRef, useState } from "react";
 import {
