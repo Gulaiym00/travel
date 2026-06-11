@@ -1,0 +1,41 @@
+.container {
+  padding-block: 27px;
+  position: fixed;
+  width: 100%;
+  background: #0000005e;
+  z-index: 99;
+  .mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      color: white;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      img {
+        width: 50px;
+        height: 50;
+        border-radius: 50%;
+      }
+      h2 {
+        color: rgb(105, 138, 105);
+        // color: rgb(25, 37, 25);
+      }
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      a {
+        color: rgb(105, 138, 105);
+      }
+      a:focus {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.486);
+        color: rgba(255, 255, 255, 0.486);
+      }
+    }
+  }
+}
