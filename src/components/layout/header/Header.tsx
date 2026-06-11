@@ -16,14 +16,16 @@ const Header = () => {
             <h2>TravelKG</h2>
           </div>
           <nav>
-            <Link href={"/"}>Областы</Link>
-            <Link href={"/"}>Туры</Link>
+            <Link href={"/region"}>Областы</Link>
+            <Link href={"/tours"}>Туры</Link>
             <Link href={"/about"}>О нас</Link>
-            <Link href={"/"}>Избранные</Link>
+            <Link href={"/favorite"}>Избранные</Link>
           </nav>
-          <span>
-            <FaUser />
-          </span>
+          <Link href={"/admin"}>
+            <span>
+              <FaUser />
+            </span>
+          </Link>
         </div>
       </div>
     </div>

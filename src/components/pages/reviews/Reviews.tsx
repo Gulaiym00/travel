@@ -59,7 +59,7 @@ const Reviews = () => {
               <input
                 type="text"
                 onChange={(e) =>
-                  setState({ ...state, userName: e.target.value })
+                  setState({ ...state, comment: e.target.value })
                 }
               />
             </div>
