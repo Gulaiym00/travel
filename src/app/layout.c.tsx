@@ -10,7 +10,7 @@ const Layout = ({ children }: ChildrenProps) => {
     <div className="layout">
       <Header />
       <main>{children}</main>
-      <Footer />
+      <Footer /git
     </div>
   );
 };

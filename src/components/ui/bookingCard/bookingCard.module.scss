@@ -1,0 +1,168 @@
+.booking {
+  margin: 0 auto;
+  // padding: 32px ;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.cardBooking {
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  padding: 28px;
+  p {
+    margin-bottom: 18px;
+    font-size: 25px;
+  }
+}
+
+.dates {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 92px;
+  margin-bottom: 28px;
+  .date {
+    width: 150px;
+    height: 96px;
+    border: none;
+    border-radius: 6px;
+    background: #f5f5f5;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    span {
+      font-size: 22px;
+    }
+    small {
+      margin-top: 4px;
+      font-size: 19px;
+    }
+  }
+}
+
+.calendarDate {
+  svg {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+}
+
+.counterPerson {
+  margin-top: 10px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: #d9d9d9;
+  margin: 12px 0;
+}
+
+.counterRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    font-size: 20px;
+  }
+}
+
+.counterBtn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 4px;
+    background: #efefef;
+    font-size: 25px;
+    padding: 10px 19px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  span {
+    font-size: 23 px;
+    font-weight: 600;
+  }
+}
+
+.priceBox {
+  margin-top: 12px;
+  padding: 10px 12px;
+  background: #f7f7f7;
+  border-radius: 4px;
+  font-size: 18px;
+}
+
+.total {
+  margin: 20px 0;
+  text-align: right;
+  font-size: 18px;
+}
+
+.formPay {
+  padding: 100px 0;
+  max-width: 620px;
+  margin: auto;
+  .field {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+    label {
+      text-align: right;
+      font-size: 20px;
+      color: #444;
+    }
+    input {
+      height: 60px;
+      padding: 0 12px;
+      border: none;
+      border-radius: 5px;
+      background: #f5f5f5;
+      outline: none;
+      font-size: 20px;
+    }
+  }
+  .submit {
+    display: block;
+    margin: 30px auto 0;
+    padding: 16px 29px;
+    border: none;
+    border-radius: 6px;
+    background: #000;
+    color: #fff;
+    font-size: 19px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 70px 0 0 165px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .field {
+    grid-template-columns: 1fr;
+
+    label {
+      text-align: left;
+    }
+  }
+
+  .dates {
+    justify-content: center;
+  }
+}

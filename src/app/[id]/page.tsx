@@ -1,5 +1,7 @@
+import Detail from "@/components/pages/detail/Detail";
+
 const page = () => {
-  return <div></div>;
+  return <Detail />;
 };
 
 export default page;
