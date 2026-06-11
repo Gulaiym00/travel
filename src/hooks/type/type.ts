@@ -12,7 +12,7 @@ export interface ResponseCreate {
   per_page: number;
   total_pages: number;
   total_items: number;
-  data:  Products[];
+  data:  Products[] ;
 }
 
 export interface IComments {
