@@ -1,8 +1,20 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import scss from "./reviews.module.scss";
 import { motion } from "framer-motion";
+import { useAddComment } from "@/hooks/useAddComment";
+import { useGetComments } from "@/hooks/useGetComments";
+import { State } from "@/hooks/type/type";
 
 const Reviews = () => {
+  const { mutate: addComment, isPending } = useAddComment();
+  const { data: comments } = useGetComments();
+  const [state, setState] = useState<State>({
+    userName: "",
+    comment: "",
+  });
+
   return (
     <div className={scss.container}>
       <div className="container">
@@ -15,82 +27,45 @@ const Reviews = () => {
         >
           <h2>Отзывы</h2>
           <div className={scss.list}>
-            <div className={scss.card}>
-              <div className={scss.top}>
-                <div className={scss.star}>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
+            {comments?.map((el, idx) => (
+              <div key={idx} className={scss.card}>
+                <div className={scss.top}>
+                  <div className={scss.star}>
+                    <p>★</p>
+                    <p>★</p>
+                    <p>★</p>
+                    <p>★</p>
+                    <p>★</p>
+                  </div>
+                  <p>{el?.userName}</p>
                 </div>
-                <p>Иван</p>
+                <p>{el?.comment}</p>
               </div>
-              <p>
-                Иссык-Көлдүн кооздугу сөз менен жеткис. Кыргызстан мага эң жакшы
-                эскерүүлөрдү тартуулады.
-              </p>
-            </div>
-            <div className={scss.card}>
-              <div className={scss.top}>
-                <div className={scss.star}>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                </div>
-                <p>Иван</p>
-              </div>
-              <p>
-                Иссык-Көлдүн кооздугу сөз менен жеткис. Кыргызстан мага эң жакшы
-                эскерүүлөрдү тартуулады.
-              </p>
-            </div>
-            <div className={scss.card}>
-              <div className={scss.top}>
-                <div className={scss.star}>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                </div>
-                <p>Иван</p>
-              </div>
-              <p>
-                Иссык-Көлдүн кооздугу сөз менен жеткис. Кыргызстан мага эң жакшы
-                эскерүүлөрдү тартуулады.
-              </p>
-            </div>
-            <div className={scss.card}>
-              <div className={scss.top}>
-                <div className={scss.star}>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                  <p>★</p>
-                </div>
-                <p>Иван</p>
-              </div>
-              <p>
-                Иссык-Көлдүн кооздугу сөз менен жеткис. Кыргызстан мага эң жакшы
-                эскерүүлөрдү тартуулады.
-              </p>
-            </div>
+            ))}
           </div>
           <h2>Расскажите о своих впечатлениях от Кыргызстана.</h2>
           <div className={scss.inputBtn}>
             <div className={scss.input}>
               <p>Имя</p>
-              <input type="text" />
+              <input
+                type="text"
+                onChange={(e) =>
+                  setState({ ...state, userName: e.target.value })
+                }
+              />
             </div>
             <div className={scss.input}>
               <p>Комментарий</p>
-              <input type="text" />
+              <input
+                type="text"
+                onChange={(e) =>
+                  setState({ ...state, userName: e.target.value })
+                }
+              />
             </div>
-            <button>Отправить</button>
+            <button onClick={() => addComment(state)}>
+              {isPending ? "...Отправляется" : "Отправлено"}
+            </button>
           </div>
         </motion.div>
       </div>
