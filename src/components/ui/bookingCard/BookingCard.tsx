@@ -1,15 +1,41 @@
+import { Products } from "@/hooks/type/type";
 import scss from "./bookingCard.module.scss";
 import { FiCalendar } from "react-icons/fi";
+import { motion } from "framer-motion";
 
-const BookingCard = () => {
+interface IBokingCardProps {
+  price: string;
+}
+
+const BookingCard = ({ price }: IBokingCardProps) => {
   return (
     <section className={scss.booking}>
-      <h2 className={scss.title}>Забронировать экскурсию</h2>
+      <motion.h2
+        className={scss.title}
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.8 }}
+      >
+        Забронировать экскурсию
+      </motion.h2>
 
-      <div className={scss.cardBooking}>
+      <motion.div
+        className={scss.cardBooking}
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.8 }}
+      >
         <p>Выберите дату и время</p>
 
-        <div className={scss.dates}>
+        <motion.div
+          className={scss.dates}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8 }}
+        >
           <button className={scss.date}>
             <span>Завтра</span>
             <small>5 июня</small>
@@ -29,9 +55,15 @@ const BookingCard = () => {
             <FiCalendar />
             <span>Выбрать дату</span>
           </button>
-        </div>
+        </motion.div>
 
-        <div className={scss.counterPerson}>
+        <motion.div
+          className={scss.counterPerson}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8 }}
+        >
           <p>Укажите количество участников</p>
 
           <div className={scss.line} />
@@ -45,38 +77,62 @@ const BookingCard = () => {
               <button>+</button>
             </div>
           </div>
-          <div className={scss.priceBox}>От 1 до 4 человек · 40.000 KGS</div>
+          <div className={scss.priceBox}>От 1 до 4 человек · {price} KGS</div>
 
           <div className={scss.total}>
-            Итого: <strong>40.000 KGS</strong>
+            Итого: <strong>{price} KGS</strong>
           </div>
 
           <div className={scss.line} />
-        </div>
+        </motion.div>
 
         <center>
-          <form className={scss.formPay}>
-            <div className={scss.field}>
+          <motion.form
+            className={scss.formPay}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.div
+              className={scss.field}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.8 }}
+            >
               <label>Имя</label>
               <input type="text" />
-            </div>
+            </motion.div>
 
-            <div className={scss.field}>
+            <motion.div
+              className={scss.field}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.8 }}
+            >
               <label>E-mail</label>
               <input type="email" placeholder="example@email.com" />
-            </div>
+            </motion.div>
 
-            <div className={scss.field}>
+            <motion.div
+              className={scss.field}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.8 }}
+            >
               <label>Введите номер телефона</label>
               <input type="tel" placeholder="+(996)" />
-            </div>
+            </motion.div>
 
             <button type="submit" className={scss.submit}>
               Начать бронирование
             </button>
-          </form>
+          </motion.form>
         </center>
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -1,58 +1,69 @@
-import { places } from "@/utils/places";
+"use client";
 import scss from "./detail.module.scss";
 import IncludedCard from "@/components/ui/includedCard/IncludedCard";
 import BookingCard from "@/components/ui/bookingCard/BookingCard";
 import LocationCard from "@/components/ui/locationCard/LocationCard";
+import { useParams } from "next/navigation";
+import { useDetailTour } from "@/hooks/tours/useDetailTour";
+import { motion } from "framer-motion";
 
 const Detail = () => {
+  const params = useParams();
+  const id = params.id as string;
+  const { data: tour, isLoading } = useDetailTour(id);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <section id={scss.detail}>
       <div className="container">
         <div className={scss.detail}>
-         <div className={scss.photoTours}>
-           <p>Кыргызстан • Бишкек</p>
-          <img src="/detailImg.png" alt="" />
-          <p>Кыргызстан/Средняя Азия/За городом и природа/Тур</p>
-         </div>
-          <div className={scss.discription}>
-            <h4>Иссык-Куль и окрестности: Два дня незабываемых открытий</h4>
-            <p>
-              Двухдневное путешествие по южному берегу Иссык-Куля: каньоны
-              Сказка и Джети-Огуз, водопады Барскоона и плато Арабель на высоте
-              3900 м. Живописные дороги, треккинг, национальная кухня и ночёвка
-              в уютном гостевом доме. Тур сочетает комфорт, активность и
-              погружение в природу и культуру Кыргызстана.
-            </p>
-          </div>
-
-          <IncludedCard />
-
-          <div className={scss.moreDetails}>
+          <motion.div
+            className={scss.photoTours}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8 }}
+          >
+            <p>Кыргызстан • Бишкек</p>
+            <img src={tour?.image} alt={tour?.title} />
+            <p>Кыргызстан/Средняя Азия/За городом и природа/Тур</p>
+          </motion.div>
+          <motion.div
+            className={scss.discription}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8 }}
+          >
+            <h4>{tour?.title}</h4>
+            <p>{tour?.description}</p>
+          </motion.div>
+          <IncludedCard
+            types={tour?.types}
+            duration={tour?.duration}
+            people={tour?.people}
+          />
+          <motion.div
+            className={scss.moreDetails}
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.8 }}
+          >
             <h5>Подробнее об экскурсии</h5>
-            <h4>Двухдневное путешествие с проживанием</h4>
-            <p>
-              Мы отправимся из Бишкека и пересечём живописный перевал Кубакы,
-              сделаем остановку у Орто-Токойского водохранилища и прогуляемся по
-              сказочным глиняным образованиям каньона Сказка. Затем нас ждёт
-              ущелье Джети-Огуз — легендарные «Семь быков» среди еловых лесов и
-              альпийских лугов. Вечером нас ждёт уютный гостевой дом в Каджи-Сай
-              и тёплый ужин. На следующий день мы отправимся в ущелье Барскоон,
-              где вас ждут водопады, хвойные леса и подъём к плато Арабель —
-              суровому и красивому высокогорному региону с десятками озёр,
-              ледниковыми потоками и тундровыми пейзажами. Здесь, на высоте
-              почти 4000 м, вы почувствуете силу настоящих гор. По пути обратно
-              в Бишкек нас ждёт вкусный обед в проверенном кафе и прощальные
-              виды на горные долины. Тур подойдёт тем, кто хочет за короткое
-              время увидеть удивительно разнообразную природу Кыргызстана, не
-              отказываясь от комфорта и насыщенной программы.
-            </p>
-          </div>
+            <h4>{tour?.link}</h4>
+            <p>{tour?.details}</p>
+          </motion.div>
           <section className={scss.bookingSection}>
-            <BookingCard />
+            <BookingCard price={tour?.price} />
           </section>
           <LocationCard />
         </div>
       </div>
+      <hr />
     </section>
   );
 };

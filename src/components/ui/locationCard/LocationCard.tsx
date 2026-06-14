@@ -1,9 +1,16 @@
 import { places } from "@/utils/places";
 import scss from "./locationCard.module.scss";
+import { motion } from "framer-motion";
 
 const LocationCard = () => {
   return (
-    <section className={scss.startLocation}>
+    <motion.section
+      className={scss.startLocation}
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false }}
+      transition={{ duration: 0.8 }}
+    >
       <h2 className={scss.title}>Место начала</h2>
 
       <p className={scss.address}>
@@ -19,18 +26,32 @@ const LocationCard = () => {
         ></iframe>
       </div>
 
-      <div className={scss.places}>
+      <motion.div
+        className={scss.places}
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.8 }}
+      >
         <h3>
           Какие места вы увидите <span>📍</span>
         </h3>
 
         <ul>
           {places.map((item) => (
-            <li key={item}>{item}</li>
+            <motion.li
+              key={item}
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.8 }}
+            >
+              {item}
+            </motion.li>
           ))}
         </ul>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 };
 

@@ -1,26 +1,44 @@
+import { Products } from "@/hooks/type/type";
 import scss from "./IncludedCard.module.scss";
+import { motion } from "framer-motion";
 
-const IncludedCard = () => {
+interface IncludedCardProps {
+  types: string;
+  duration: string;
+  people: string;
+}
+
+const IncludedCard = ({ duration, people, types }: IncludedCardProps) => {
   return (
     <section className={scss.tourInfo}>
-      <div className={scss.top}>
-        <div className={scss.item}>
-          🚗 Индивидуальная, автомобильно-пешеходная
-        </div>
+      <motion.div
+        className={scss.top}
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.8 }}
+      >
+        <div className={scss.item}>🚗 {types}, автомобильно-пешеходная</div>
 
         <div className={scss.item}>📱 Билет в телефоне</div>
 
-        <div className={scss.item}>🕒 2 дня, 1 ночь</div>
+        <div className={scss.item}>🕒 {duration}</div>
 
         <div className={scss.item}>🌐 Русский/Английский язык</div>
 
-        <div className={scss.item}>👥 Размер группы до 4 человек</div>
+        <div className={scss.item}>👥 Размер группы до {people}человек</div>
 
         <div className={scss.item}>👶 Можно с детьми</div>
-      </div>
+      </motion.div>
 
       <div className={scss.bottom}>
-        <div className={scss.column}>
+        <motion.div
+          className={scss.column}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8 }}
+        >
           <h3>Что включено</h3>
 
           <ul className={scss.included}>
@@ -28,9 +46,15 @@ const IncludedCard = () => {
             <li>Транспорт</li>
             <li>Проживание в отелях (завтрак)</li>
           </ul>
-        </div>
+        </motion.div>
 
-        <div className={scss.column}>
+        <motion.div
+          className={scss.column}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8 }}
+        >
           <h3>Что не включено</h3>
 
           <ul className={scss.excluded}>
@@ -40,7 +64,7 @@ const IncludedCard = () => {
             <li>Дополнительные активности</li>
             <li>Сувениры</li>
           </ul>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
