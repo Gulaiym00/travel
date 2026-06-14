@@ -16,8 +16,8 @@ const Reviews = () => {
   });
 
 
-  function handleAdd ()=>{
-    addCommit(state)
+  const handleAdd  = () => {
+    addComment(state)
       setState({
     userName: "",
     comment: "",
