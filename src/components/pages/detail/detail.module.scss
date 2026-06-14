@@ -1,0 +1,104 @@
+#detail {
+  background: #fff;
+  padding: 100px 0 0 ;
+  .detail {
+    margin: 0 auto;
+    padding: 32px 40px;
+    border-radius: 8px;
+    .photoTours {
+      p:first-child {
+        font-size: 14px;
+        color: #000000a9;
+        margin-bottom: 20px;
+      }
+      img {
+        max-width: 1120px;
+        width: 100%;
+        height: 600px;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        object-fit: cover;
+      }
+      p:nth-of-type(2) {
+        font-size: 14px;
+        color: #000000a9;
+        margin-bottom: 24px;
+      }
+    }
+    .discription {
+      margin-bottom: 32px;
+      h4 {
+        font-size: 38px;
+        line-height: 1.2;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 20px;
+      }
+      p {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #444;
+      }
+    }
+    .moreDetails {
+      margin-top: 40px;
+      padding-bottom: 40px;
+      h5 {
+        font-size: 28px;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 28px;
+      }
+      h4 {
+        font-size: 24px;
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 18px;
+      }
+      p {
+        font-size: 17px;
+        line-height: 1.8;
+        color: #444;
+        text-align: justify;
+      }
+    }
+    .bookingSection {
+      background-color: #f4f4f4;
+      width: 100%;
+      padding: 50px 0;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+      margin-right: -50vw;
+      padding: 50px calc(49vw - 50% + 20px);
+    }
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .detail {
+    padding: 24px 20px;
+  }
+  .discription {
+    h4 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+  .moreDetails {
+    h5 {
+      font-size: 24px;
+    }
+    h4 {
+      font-size: 22px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+}

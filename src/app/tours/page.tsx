@@ -1,10 +1,7 @@
+import Tours from "@/components/pages/tours/Tours";
 
 const page = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return <Tours />;
 };
 
 export default page;

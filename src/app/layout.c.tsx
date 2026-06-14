@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Footer from "@/components/layout/footer/Footer";
 import Header from "@/components/layout/header/Header";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

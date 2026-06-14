@@ -1,6 +1,6 @@
 .region {
   padding-block: 40px;
-
+  background: #000;
   .mainRegion {
     display: flex;
     flex-direction: column;
@@ -9,6 +9,7 @@
   }
 
   .regionCard {
+    margin-top: 100px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -20,13 +21,13 @@
       flex-direction: row;
       background-color: #000;
       color: #fff;
+      border: 1px solid #ffff;
     }
 
     &:nth-child(even) {
       flex-direction: row-reverse;
       background-color: #fff;
       color: #000;
-      border: 1px solid #000;
     }
   }
 

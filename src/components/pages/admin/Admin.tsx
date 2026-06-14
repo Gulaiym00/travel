@@ -3,9 +3,11 @@ import scss from "./admin.module.scss";
 import { useForm } from "react-hook-form";
 import { useCreateProduct } from "@/hooks/admin/useCreateProduct";
 import { Products } from "@/hooks/type/type";
-import AdminCard from "@/components/adminUi/adminCard/AdminCard";
+import AdminCard from "@/components/ui/adminCard/AdminCard";
 import { useUpdateProduct } from "@/hooks/admin/useUpdateProduct";
 import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+
 import {
   getMutationErrorMessage,
   getSectionTitle,
@@ -21,10 +23,8 @@ const Admin = () => {
   const [formError, setFormError] = useState<string | null>(null);
   const editingIdRef = useRef<number | null>(null);
   const { register, reset, handleSubmit } = useForm<Products>();
-  const {
-    mutate: createProduct,
-    isPending: isCreatePending,
-  } = useCreateProduct();
+  const { mutate: createProduct, isPending: isCreatePending } =
+    useCreateProduct();
   const { mutate: updateProduct, isPending: isUpdatePending } =
     useUpdateProduct();
 
@@ -43,15 +43,11 @@ const Admin = () => {
     const action = resolveSubmitAction(data, editingId);
     const options = {
       onSuccess: resetAfterSubmit,
-      onError: (error: unknown) =>
-        setFormError(getMutationErrorMessage(error)),
+      onError: (error: unknown) => setFormError(getMutationErrorMessage(error)),
     };
 
     if (action.mode === "update") {
-      updateProduct(
-        { id: action.id, newProduct: action.payload },
-        options,
-      );
+      updateProduct({ id: action.id, newProduct: action.payload }, options);
       return;
     }
 
@@ -69,11 +65,21 @@ const Admin = () => {
   return (
     <div className={scss.admin}>
       <div className="container">
-        <section id="admin-tour-form" className={scss.addSection}>
+        <motion.section
+          id="admin-tour-form"
+          className={scss.addSection}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8 }}
+        >
           <h1 className={scss.sectionTitle}>{getSectionTitle(isEditing)}</h1>
           {formError && <p className={scss.error}>{formError}</p>}
           <form onSubmit={handleSubmit(handleData)} className={scss.form}>
-            <input type="hidden" {...register("_id", { valueAsNumber: true })} />
+            <input
+              type="hidden"
+              {...register("_id", { valueAsNumber: true })}
+            />
             <div className={scss.field}>
               <label>Название тура</label>
               <input {...register("title")} name="title" type="text" />
@@ -129,12 +135,18 @@ const Admin = () => {
               {getSubmitLabel(isEditing, isPending)}
             </button>
           </form>
-        </section>
+        </motion.section>
 
-        <section className={scss.toursSection}>
+        <motion.section
+          className={scss.toursSection}
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
+          transition={{ duration: 0.8 }}
+        >
           <h2 className={scss.sectionTitle}>Добавленные туры</h2>
           <AdminCard onEdit={handleEdit} />
-        </section>
+        </motion.section>
       </div>
     </div>
   );
