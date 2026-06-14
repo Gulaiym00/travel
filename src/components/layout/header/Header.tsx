@@ -13,7 +13,7 @@ const Header = () => {
         <div className={scss.mainContainer}>
           <div className={scss.logo}>
             <img onClick={() => push(`/`)} src="/travelLogo.png" alt="logo" />
-            <h2>TravelKG</h2>
+            <h2 onClick={() => push(`/`)} >TravelKG</h2>
           </div>
           <nav>
             <Link href={"/region"}>Областы</Link>

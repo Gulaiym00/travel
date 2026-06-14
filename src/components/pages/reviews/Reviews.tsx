@@ -15,6 +15,15 @@ const Reviews = () => {
     comment: "",
   });
 
+
+  function handleAdd ()=>{
+    addCommit(state)
+      setState({
+    userName: "",
+    comment: "",
+  });
+  }
+
   return (
     <div className={scss.container}>
       <div className="container">
@@ -63,8 +72,10 @@ const Reviews = () => {
                 }
               />
             </div>
-            <button onClick={() => addComment(state)}>
-              {isPending ? "...Отправляется" : "Отправлено"}
+            <button
+              onClick={handleAdd}
+            >
+              {isPending ? "...Отправляется" : "Отправить"}
             </button>
           </div>
         </motion.div>

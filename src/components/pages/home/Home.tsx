@@ -9,7 +9,9 @@ import RegionCard from "@/components/ui/regionCard/RegionCard";
 import Reviews from "../reviews/Reviews";
 import { MdStart } from "react-icons/md";
 import { Typewriter } from "react-simple-typewriter";
+import { useRouter } from "next/navigation";
 const Home = () => {
+  const {push} = useRouter()
   return (
     <>
       <section className={scss.hero}>
@@ -33,7 +35,7 @@ const Home = () => {
               культуры вместе с TravelKG
             </p>
             <div className={scss.btn}>
-              <button>Исследовать туры</button>
+              <button onClick={()=> push("/tours")}>Исследовать туры</button>
               <span>
                 <MdStart />
               </span>
