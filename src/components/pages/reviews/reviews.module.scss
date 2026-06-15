@@ -26,6 +26,8 @@
           gap: 20px;
           .star {
             display: flex;
+            color: gold;
+
             p {
               color: yellow;
             }
@@ -38,13 +40,16 @@
       align-items: center;
       gap: 35px;
       padding-block: 40px;
+      span{
+        color: gold;
+      }
       .input {
         input {
           background: #0e0f0e;
           outline: none;
           border: none;
           color: white;
-          padding: 3px 20px;  
+          padding: 3px 20px;
         }
         input:focus {
           -webkit-box-shadow: 11px 10px 29px 5px #17420d;

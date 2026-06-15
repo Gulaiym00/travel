@@ -1,5 +1,5 @@
 export interface IComResponse {
- success: boolean;
+  success: boolean;
   current_page: number;
   per_page: number;
   total_pages: number;
@@ -12,17 +12,19 @@ export interface ResponseCreate {
   per_page: number;
   total_pages: number;
   total_items: number;
-  data:  Products[] ;
+  data: Products[];
 }
 
 export interface IComments {
   userName: string;
   comment: string;
+  rating: number;
 }
 
 export interface State {
   userName: string;
   comment: string;
+  rating: number;
 }
 export interface Products {
   title: string;
