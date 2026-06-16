@@ -1,20 +1,21 @@
-@import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+@font-face {
+  font-family: "KyivTypeSans";
+  src: url("/fonts/KyivTypeSans-VarGX.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "KyivTypeSerif", serif;
   text-decoration: none;
-  /* outline: 1px solid blue; */
-}
-@font-face {
-  font-family: "KyivTypeSerif";
-  src: url("/font/Kyiv%20Type%20Serif/KyivTypeSerif-VarGX.ttf")
-    format("truetype");
+  font-family: "KyivTypeSans", sans-serif;
 }
 
 body {
-  font-family: "KyivTypeSerif", serif;
+  font-family: "KyivTypeSans", sans-serif;
 }
 
 .container {
