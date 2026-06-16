@@ -31,6 +31,7 @@
       flex-direction: column;
       justify-content: space-between;
       .infoFavorite {
+        position: relative;
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -50,7 +51,6 @@
         padding-left: 20px;
         align-items: center;
         justify-content: space-between;
-        position: relative;
         .price {
           color: #ffffff;
           display: flex;
@@ -63,8 +63,8 @@
           color: #ffffff;
           font-size: 30px;
           position: absolute;
-          left: 295px;
-          bottom: -5px;
+          left: 661px;
+          bottom: 14px;
         }
         .btn {
           display: flex;
