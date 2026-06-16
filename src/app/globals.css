@@ -2,26 +2,27 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Poppins;
   box-sizing: border-box;
+  font-family: "KyivTypeSerif", serif;
   text-decoration: none;
   /* outline: 1px solid blue; */
 }
-body {
+@font-face {
+  font-family: "KyivTypeSerif";
+  src: url("/font/Kyiv%20Type%20Serif/KyivTypeSerif-VarGX.ttf")
+    format("truetype");
 }
+
+body {
+  font-family: "KyivTypeSerif", serif;
+}
+
 .container {
   max-width: 1240px;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
-
-h1 {}
-h2 {}
-h3 {}
-h4 {}
-h5 {}
-
 p,
 a {
   font-size: 16px;
