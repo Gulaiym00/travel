@@ -18,9 +18,11 @@ const Favorite = () => {
             viewport={{ once: false }}
             transition={{ duration: 0.8 }}
           >
-            {tours.map((item) => (
-              <FavoriteCard tour={item} key={item._id} />
-            ))}
+            {tours && tours.length > 0 ? (
+              tours.map((item) => <FavoriteCard tour={item} key={item._id} />)
+            ) : (
+              <p className={scss.emptyMessage}>Пока пусто</p>
+            )}
           </motion.div>
         </div>
       </div>
