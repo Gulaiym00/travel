@@ -7,6 +7,11 @@
     flex-direction: column;
     gap: 20px;
     text-align: center;
+    .showAllComm {
+      width: 200px;
+      background: #0e0f0e;
+      color: white;
+    }
     .list {
       display: flex;
       flex-wrap: wrap;
@@ -40,7 +45,7 @@
       align-items: center;
       gap: 35px;
       padding-block: 40px;
-      span{
+      span {
         color: gold;
       }
       .input {
