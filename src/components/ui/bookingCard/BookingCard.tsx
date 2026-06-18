@@ -19,8 +19,8 @@ type FeedbackForm = {
   totalPrice: number;
 };
 
-const BOT_TOKEN = "8803744851:AAGPDPZni7krfnX-IvLTMRw3Ry3HDB2GYd4";
-const CHAT_ID = "7542185722";
+const BOT_TOKEN = "8873304993:AAHu2AhNJiRghfW_vDiSmr-xR8GyAOrIrLo";
+const CHAT_ID = "7218795915";
 
 const BookingCard = ({ price }: IBokingCardProps) => {
   const [selectedDate, setSelectedDate] = useState<string>("");
@@ -364,16 +364,16 @@ Email: ${form.email}
             </motion.div>
 
             <button
-              // onClick={() => {
-              //   // {
-              //   //   alert(
-              //   //     "Пожалуйста, заполните все поля, выберите дату и количество перед оплатой!",
-              //   //   );
-              //   //   return;
-              //   // }
+              onClick={() => {
+                // {
+                //   alert(
+                //     "Пожалуйста, заполните все поля, выберите дату и количество перед оплатой!",
+                //   );
+                //   return;
+                // }
 
-              //   router.push("/payment");
-              // }}
+                router.push("/payment");
+              }}
               type="submit"
               className={scss.submit}
               disabled={loading}
