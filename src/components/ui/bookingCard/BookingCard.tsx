@@ -170,6 +170,7 @@ Email: ${form.email}
 
   ////////////////////////////////////////////////////////
   const router = useRouter();
+  const addToInformation = useBookingTours((state) => state.addToInformation);
   // const [name, setName] = useState<string>("");
   // const [email, setEmail] = useState<string>("");
   // const [number, setNumber] = useState<string>("");
@@ -371,7 +372,14 @@ Email: ${form.email}
                 //   );
                 //   return;
                 // }
-
+                addToInformation({
+                  name: form.name,
+                  email: form.email,
+                  number: form.number,
+                  date: form.date,
+                  count: count,
+                  totalPrice: calculatedTotalPrice,
+                });
                 router.push("/payment");
               }}
               type="submit"

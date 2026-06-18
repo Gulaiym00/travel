@@ -2,6 +2,7 @@
 import { useBookingTours } from "@/hooks/tours/useBookingTour";
 import scss from "./payment.module.scss";
 import { useState, ChangeEvent, useEffect } from "react";
+import { log } from "console";
 
 const Payment = () => {
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -22,11 +23,9 @@ const Payment = () => {
     setCvv(slised);
   };
 
-  const totalPrice = useBookingTours((state) => {
-    const lastBooking = state.information[state.information.length - 1];
-    return lastBooking?.totalPrice || 0;
-  });
-
+  const totalPrice = useBookingTours(
+  (state) => state.information[state.information.length - 1]?.totalPrice || 0
+);
   return (
     <section className={scss.payment}>
       <div className={scss.container}>
