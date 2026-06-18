@@ -1,19 +1,25 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import scss from "./reviews.module.scss";
 import { motion } from "framer-motion";
 import { useAddComment } from "@/hooks/useAddComment";
 import { useGetComments } from "@/hooks/useGetComments";
+import { IComments } from "@/hooks/type/type";
 
 const Reviews = () => {
   const { mutate: addComment, isPending } = useAddComment();
   const { data: comments } = useGetComments();
-
+  const [threeComm, seThreeComm] = useState<IComments[]>([]);
+  useEffect(() => {
+    if (comments) {
+      seThreeComm(comments.slice(0, 3));
+    }
+  }, [comments]);
   const [state, setState] = useState({
     userName: "",
     comment: "",
-    rating: 5,
+    rating: 0,
   });
 
   const handleAdd = () => {
@@ -22,7 +28,7 @@ const Reviews = () => {
     setState({
       userName: "",
       comment: "",
-      rating: 5,
+      rating: 0,
     });
   };
 
@@ -39,7 +45,7 @@ const Reviews = () => {
           <h2>Отзывы</h2>
 
           <div className={scss.list}>
-            {comments?.map((el, idx) => (
+            {threeComm?.map((el, idx) => (
               <div key={idx} className={scss.card}>
                 <div className={scss.top}>
                   <div className={scss.star}>
@@ -53,7 +59,15 @@ const Reviews = () => {
               </div>
             ))}
           </div>
-
+          {threeComm != comments ? (
+            <button className={scss.showAllComm} onClick={() => comments && seThreeComm(comments)}>
+              Посмотреть все
+            </button>
+          ) : (
+            <button className={scss.showAllComm} onClick={() => seThreeComm(comments.slice(0, 3))}>
+              Свернуть...
+            </button>
+          )}
           <h2>Расскажите о своих впечатлениях от Кыргызстана</h2>
 
           <div className={scss.inputBtn}>

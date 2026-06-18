@@ -1,36 +1,181 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TravelKG
 
-## Getting Started
+Веб-приложение туристической компании **TravelKG** — платформа для знакомства с Кыргызстаном, просмотра туров, бронирования экскурсий и управления контентом через админ-панель.
 
-First, run the development server:
+## О проекте
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+TravelKG помогает путешественникам открывать красоту гор, озёр и древней культуры Кыргызстана. Сайт охватывает все 7 областей страны, предлагает каталог туров с подробными описаниями, систему отзывов, избранное и оформление бронирования с имитацией оплаты.
+
+## Основные возможности
+
+- **Главная страница** — приветственный экран с анимацией печати текста, карточки популярных регионов, интересные факты о Кыргызстане и блок отзывов
+- **Туры** — каталог экскурсий с ценами, описаниями и возможностью добавить тур в избранное
+- **Детальная страница тура** (`/tours/[id]`) — фото, описание, тип тура, длительность, количество участников, форма бронирования и карта локации
+- **Области** — информация о всех 8 регионах: Нарын, Чуй, Ош, Иссык-Куль, Талас, Баткен, Джалал-Абад и Бишкек
+- **Избранное** — сохранённые туры в `localStorage` через Zustand
+- **О нас** — миссия компании, статистика, команда, интерактивная карта (Leaflet) с точкой старта на площади Ала-Тоо
+- **Отзывы** — просмотр и добавление отзывов с оценкой от 1 до 5 звёзд
+- **Бронирование** — выбор даты, количества участников, расчёт итоговой суммы, отправка заявки в Telegram
+- **Оплата** (`/payment`) — форма ввода данных карты с имитацией успешного платежа
+- **Админ-панель** (`/admin`) — создание, редактирование и удаление туров через REST API
+
+## Технологический стек
+
+| Категория | Технологии |
+|-----------|------------|
+| Фреймворк | [Next.js 16](https://nextjs.org/) (App Router) |
+| Язык | TypeScript |
+| UI | React 19, SCSS Modules |
+| Анимации | Framer Motion, react-simple-typewriter |
+| Состояние | Zustand (с persist в localStorage) |
+| Запросы к API | TanStack React Query, Axios |
+| Формы | React Hook Form |
+| Карты | Leaflet, react-leaflet |
+| Иконки | react-icons |
+| Компилятор | React Compiler (babel-plugin-react-compiler) |
+
+## Структура проекта
+
+```
+travel/
+├── public/                    # Статические файлы (логотип, фоны, шрифты KyivType)
+├── src/
+│   ├── app/                   # Маршруты Next.js App Router
+│   │   ├── (home)/page.tsx    # Главная
+│   │   ├── about/page.tsx     # О нас
+│   │   ├── admin/page.tsx     # Админ-панель
+│   │   ├── favorite/page.tsx  # Избранное
+│   │   ├── payment/page.tsx   # Оплата
+│   │   ├── region/page.tsx    # Области
+│   │   ├── tours/
+│   │   │   ├── page.tsx       # Каталог туров
+│   │   │   └── [id]/page.tsx  # Детали тура
+│   │   ├── layout.tsx         # Корневой layout
+│   │   ├── layout.c.tsx       # Клиентский layout (Header, Footer, QueryClient)
+│   │   └── globals.css        # Глобальные стили
+│   ├── components/
+│   │   ├── layout/            # Header, Footer
+│   │   ├── pages/             # Страничные компоненты (Home, Tours, Admin и др.)
+│   │   └── ui/                # Переиспользуемые карточки (ToursCard, BookingCard и др.)
+│   ├── hooks/
+│   │   ├── admin/             # CRUD-хуки для туров
+│   │   ├── api/               # Axios-инстансы (travelApi, commentApi)
+│   │   ├── tours/             # Избранное, бронирование, детали тура
+│   │   └── type/              # TypeScript-интерфейсы
+│   └── utils/                 # Данные регионов, мест, утилиты админки
+├── next.config.ts
+├── package.json
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Маршруты
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Путь | Описание |
+|------|----------|
+| `/` | Главная страница |
+| `/tours` | Каталог туров |
+| `/tours/[id]` | Детальная страница тура |
+| `/region` | Области Кыргызстана |
+| `/about` | О компании |
+| `/favorite` | Избранные туры |
+| `/payment` | Страница оплаты |
+| `/admin` | Панель управления турами |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## API
 
-## Learn More
+Приложение использует внешний CRUD API [elcho.dev](https://api-crud.elcho.dev):
 
-To learn more about Next.js, take a look at the following resources:
+| Сервис | Base URL | Назначение |
+|--------|----------|------------|
+| Туры | `https://api-crud.elcho.dev/api/v1/d5873-636d5-87f8c/travel` | GET, POST, PUT, DELETE туров |
+| Отзывы | `https://api-crud.elcho.dev/api/v1/d7002-e8c6f-5b9df/comment` | GET, POST комментариев |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Модель тура (`Products`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```ts
+{
+  _id: number;
+  title: string;        // Название тура
+  description: string;  // Краткое описание
+  types: string;        // Вид тура
+  image: string;        // URL изображения
+  link: string;         // Заголовок блока «Подробнее»
+  price: string;        // Цена в KGS
+  details: string;      // Подробное описание
+  duration: string;     // Продолжительность
+  people: string;       // Количество человек
+  createdAt: string;
+  updatedAt: string;
+}
+```
 
-## Deploy on Vercel
+### Модель отзыва (`IComments`)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```ts
+{
+  userName: string;
+  comment: string;
+  rating: number; // 1–5
+}
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Управление состоянием
+
+Два Zustand-стора с сохранением в `localStorage`:
+
+| Стор | Ключ | Описание |
+|------|------|----------|
+| `useLikesTours` | `tours` | Избранные туры (добавление / удаление) |
+| `useBookingTours` | `bookingTours` | Данные бронирования (имя, email, телефон, дата, кол-во, сумма) |
+
+## Интеграция с Telegram
+
+При бронировании тура форма отправляет данные заявки в Telegram-бот. Токен бота и `chat_id` сейчас заданы в коде компонента `BookingCard` — для продакшена рекомендуется вынести их в переменные окружения (`.env.local`).
+
+## Установка и запуск
+
+### Требования
+
+- Node.js 18+
+- npm
+
+### Шаги
+
+```bash
+# Клонировать репозиторий
+git clone <url-репозитория>
+cd travel
+
+# Установить зависимости
+npm install
+
+# Запустить dev-сервер
+npm run dev
+```
+
+Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000).
+
+### Доступные скрипты
+
+| Команда | Описание |
+|---------|----------|
+| `npm run dev` | Запуск в режиме разработки |
+| `npm run build` | Сборка для продакшена |
+| `npm run start` | Запуск собранного приложения |
+
+## Шрифты и дизайн
+
+В проекте используются кастомные шрифты семейства **KyivType** (Sans, Serif, Titling) из папки `public/fonts/`. Стилизация выполнена через SCSS Modules с анимациями появления блоков при скролле (Framer Motion `whileInView`).
+
+## Контакты (из футера)
+
+- Телефон: 0770 456 555, 0900 246 111
+- Email: travelkg@gmail.com
+- Адрес: Бишкек
+- Instagram: @travelkg_official
+- Telegram: @travelkg
+- WhatsApp: +996 505 334 555
+
+## Лицензия
+
+Проект является приватным (`"private": true` в `package.json`).
