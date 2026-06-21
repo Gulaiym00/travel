@@ -1,15 +1,18 @@
 "use client";
 import React from "react";
+import dynamic from "next/dynamic";
 import scss from "./about.module.scss";
 import { IoPeople, IoLocationOutline } from "react-icons/io5";
 import { TbStarsFilled } from "react-icons/tb";
 import { LiaMapMarkedAltSolid } from "react-icons/lia";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
 import { motion } from "framer-motion";
 
+const AboutMap = dynamic(() => import("./AboutMap"), {
+  ssr: false,
+  loading: () => <div style={{ height: "500px" }}>Загрузка карты...</div>,
+});
+
 const About = () => {
-  const position: [number, number] = [42.8771, 74.6066];
   return (
     <div className={scss.container}>
       <div className="container">
@@ -162,17 +165,7 @@ const About = () => {
             </div>
           </motion.div>
           <h2> Место начала тура: Площадь Ала-Тоо</h2>
-          <MapContainer
-            center={[42.8771, 74.6066]}
-            zoom={16}
-            style={{ height: "500px", width: "100%" }}
-          >
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-
-            <Marker position={[42.8771, 74.6066]}>
-              <Popup>Площадь Ала-Тоо</Popup>
-            </Marker>
-          </MapContainer>
+          <AboutMap />
           <h2>Какие места вы увидите: </h2>
           <div className={scss.places}>
             <p> Озеро Иссык-Куль</p>
